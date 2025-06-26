@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unifranz Algebra - Calculadora Matemática Avanzada</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧮 Unifranz Algebra</h1>
+            <p>Tu calculadora matemática avanzada para álgebra II</p>
+        </div>
+
+        <div class="intro">
+            <h2>Bienvenido a Algebra Unifranz</h2>
+            <p>Esta es una herramienta completa diseñada para estudiantes, profesores e estudiantes que necesitan resolver problemas matemáticos complejos de manera rápida y precisa.</p>
+            <p><strong>¿Qué puedes hacer aquí?</strong> Resolver cálculos de error porcentual para análisis de precisión, realizar operaciones con matrices de diferentes dimensiones, y calcular interpolaciones lineales para análisis de datos.</p>
+            <p>Cada herramienta está optimizada para darte resultados claros y explicaciones detalladas del proceso de cálculo.</p>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>📊 Error Porcentual</h3>
+                <p>Calcula la precisión de tus mediciones comparando valores teóricos y experimentales. Esencial para laboratorios y análisis de datos.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔢 Operaciones con Matrices</h3>
+                <p>Suma, resta y multiplica matrices de 1×1, 2×2 y 3×3. Perfecto para álgebra lineal y sistemas de ecuaciones.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📈 Interpolación Lineal</h3>
+                <p>Encuentra valores intermedios entre puntos conocidos. Útil para análisis de tendencias y predicciones.</p>
+            </div>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showSection('error')">Error Porcentual</button>
+            <button class="tab-btn" onclick="showSection('matrices')">Matrices</button>
+            <button class="tab-btn" onclick="showSection('interpolacion')">Interpolación</button>
+        </div>
+
+        <div id="error-section" class="calculator-section active">
+            <h2>Calculadora de Error Porcentual</h2>
+            <div class="form-group">
+                <label for="valor-teorico">Valor Teórico (Vt):</label>
+                <input type="number" id="valor-teorico" step="any" placeholder="Ingresa el valor teórico o esperado">
+            </div>
+            <div class="form-group">
+                <label for="valor-experimental">Valor Experimental (Ve):</label>
+                <input type="number" id="valor-experimental" step="any" placeholder="Ingresa el valor medido u observado">
+            </div>
+            <button class="btn" onclick="calcularError()">Calcular Error Porcentual</button>
+            <div id="error-result"></div>
+        </div>
+
+        <div id="matrices-section" class="calculator-section">
+            <h2>Calculadora de Matrices</h2>
+            <div class="form-group">
+                <label for="matrix-size">Tamaño de las matrices:</label>
+                <select id="matrix-size" onchange="cambiarTamanoMatriz()">
+                    <option value="1">1×1</option>
+                    <option value="2">2×2</option>
+                    <option value="3">3×3</option>
+                </select>
+            </div>
+            
+            <div class="matrix-container">
+                <div>
+                    <h3>Matriz A:</h3>
+                    <div id="matrix-a" class="matrix-inputs matrix-1x1">
+                        <input type="number" step="any" placeholder="a11">
+                    </div>
+                </div>
+                <div>
+                    <h3>Matriz B:</h3>
+                    <div id="matrix-b" class="matrix-inputs matrix-1x1">
+                        <input type="number" step="any" placeholder="b11">
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 20px 0;">
+                <button class="btn" onclick="operarMatrices('suma')" style="margin: 0 10px;">A + B</button>
+                <button class="btn" onclick="operarMatrices('resta')" style="margin: 0 10px;">A - B</button>
+                <button class="btn" onclick="operarMatrices('multiplicacion')" style="margin: 0 10px;">A × B</button>
+            </div>
+            <div id="matrices-result"></div>
+        </div>
+
+        <div id="interpolacion-section" class="calculator-section">
+            <h2>Interpolación Lineal</h2>
+            <div class="form-group">
+                <label for="x1">Punto 1 - X₁:</label>
+                <input type="number" id="x1" step="any" placeholder="Coordenada X del primer punto">
+            </div>
+            <div class="form-group">
+                <label for="y1">Punto 1 - Y₁:</label>
+                <input type="number" id="y1" step="any" placeholder="Coordenada Y del primer punto">
+            </div>
+            <div class="form-group">
+                <label for="x2">Punto 2 - X₂:</label>
+                <input type="number" id="x2" step="any" placeholder="Coordenada X del segundo punto">
+            </div>
+            <div class="form-group">
+                <label for="y2">Punto 2 - Y₂:</label>
+                <input type="number" id="y2" step="any" placeholder="Coordenada Y del segundo punto">
+            </div>
+            <div class="form-group">
+                <label for="x-interpolacion">Valor X a interpolar:</label>
+                <input type="number" id="x-interpolacion" step="any" placeholder="Valor X para el cual quieres encontrar Y">
+            </div>
+            <button class="btn" onclick="calcularInterpolacion()">Calcular Interpolación</button>
+            <div id="interpolacion-result"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
